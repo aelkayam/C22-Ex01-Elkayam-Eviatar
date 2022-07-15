@@ -65,6 +65,8 @@ avgZerosInInput,
 avgOnesInInput,
 numOfDivisibleByThree,
 numOfPalidromes);
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadLine();
         }
 
         // get user input, after authentication.
