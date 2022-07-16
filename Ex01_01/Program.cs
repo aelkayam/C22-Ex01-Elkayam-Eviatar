@@ -6,6 +6,7 @@ namespace Ex01_01
     {
         public static void Main()
         {
+            // input and authentication:
             string firstNumber = userInput();
             string secondNumber = userInput();
             string thirdNumber = userInput();
@@ -20,38 +21,10 @@ namespace Ex01_01
             int thirdNumberDecimal = convertToDecimal(int.Parse(thirdNumber));
 
             // check how many are divisible by 3:
-            int numOfDivisibleByThree = 0;
-            if (divisibleByThree(firstNumberDecimal))
-            {
-                numOfDivisibleByThree++;
-            }
-
-            if (divisibleByThree(secondNumberDecimal))
-            {
-                numOfDivisibleByThree++;
-            }
-
-            if (divisibleByThree(thirdNumberDecimal))
-            {
-                numOfDivisibleByThree++;
-            }
+            int numOfDivisibleByThree = countNumsDivisibleByThree(firstNumberDecimal, secondNumberDecimal, thirdNumberDecimal);
 
             // check how many are palindromes:
-            int numOfPalidromes = 0;
-            if (isPalindrome(firstNumberDecimal))
-            {
-                numOfPalidromes++;
-            }
-
-            if (isPalindrome(secondNumberDecimal))
-            {
-                numOfPalidromes++;
-            }
-
-            if (isPalindrome(thirdNumberDecimal))
-            {
-                numOfPalidromes++;
-            }
+            int numOfPalindromes = countPalindromes(firstNumberDecimal, secondNumberDecimal, thirdNumberDecimal);
 
             ascendingSort(firstNumberDecimal, secondNumberDecimal, thirdNumberDecimal, out int biggestNum, out int midNum, out int smallestNum);
 
@@ -64,8 +37,8 @@ There are {3} palindromes.",
 avgZerosInInput,
 avgOnesInInput,
 numOfDivisibleByThree,
-numOfPalidromes);
-            Console.WriteLine("Press any key to exit...");
+numOfPalindromes);
+            Console.WriteLine("Press enter to exit...");
             Console.ReadLine();
         }
 
@@ -104,6 +77,55 @@ numOfPalidromes);
             return isCorrectLengh && isBinaryNum;
         }
 
+        private static int countNumsDivisibleByThree(int i_FirstNumberDecimal, int i_SecondNumberDecimal, int i_ThirdNumberDecimal)
+        {
+            int numOfDivisibleByThree = 0;
+            if (divisibleByThree(i_FirstNumberDecimal))
+            {
+                numOfDivisibleByThree++;
+            }
+
+            if (divisibleByThree(i_SecondNumberDecimal))
+            {
+                numOfDivisibleByThree++;
+            }
+
+            if (divisibleByThree(i_ThirdNumberDecimal))
+            {
+                numOfDivisibleByThree++;
+            }
+
+            return numOfDivisibleByThree;
+        }
+
+        // return true if the number is divisible by 3.
+        private static bool divisibleByThree(int i_DecimalNum)
+        {
+            int remainder = i_DecimalNum % 3;
+            return remainder == 0;
+        }
+
+        private static int countPalindromes(int i_FirstNumberDecimal, int i_SecondNumberDecimal, int i_ThirdNumberDecimal)
+        {
+            int numOfPalindromes = 0;
+            if (isPalindrome(i_FirstNumberDecimal))
+            {
+                numOfPalindromes++;
+            }
+
+            if (isPalindrome(i_SecondNumberDecimal))
+            {
+                numOfPalindromes++;
+            }
+
+            if (isPalindrome(i_ThirdNumberDecimal))
+            {
+                numOfPalindromes++;
+            }
+
+            return numOfPalindromes;
+        }
+
         // return true if the number is a palindrome
         private static bool isPalindrome(int i_Num)
         {
@@ -116,13 +138,6 @@ numOfPalidromes);
             }
 
             return reveredNum == originalNum;
-        }
-
-        // return true if the number is divisible by 3.
-        private static bool divisibleByThree(int i_DecimalNum)
-        {
-            int remainder = i_DecimalNum % 3;
-            return remainder == 0;
         }
 
         // convert binary to decimal.
@@ -164,6 +179,7 @@ numOfPalidromes);
             return amountOfDigit;
         }
 
+        // sort three numbers in ascending order
         private static void ascendingSort(int num1, int num2, int num3, out int first, out int second, out int third)
         {
             if(num1 > num2)
