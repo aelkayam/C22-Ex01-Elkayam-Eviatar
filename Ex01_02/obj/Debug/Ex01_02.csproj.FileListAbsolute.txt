@@ -1,0 +1,8 @@
+D:\VS2022-workplace\C22 Ex01 Elkayam 318356136 Eviatar 313167413\Ex01_02\bin\Debug\Ex01_02.exe.config
+D:\VS2022-workplace\C22 Ex01 Elkayam 318356136 Eviatar 313167413\Ex01_02\bin\Debug\Ex01_02.exe
+D:\VS2022-workplace\C22 Ex01 Elkayam 318356136 Eviatar 313167413\Ex01_02\bin\Debug\Ex01_02.pdb
+D:\VS2022-workplace\C22 Ex01 Elkayam 318356136 Eviatar 313167413\Ex01_02\obj\Debug\Ex01_02.csproj.AssemblyReference.cache
+D:\VS2022-workplace\C22 Ex01 Elkayam 318356136 Eviatar 313167413\Ex01_02\obj\Debug\Ex01_02.csproj.SuggestedBindingRedirects.cache
+D:\VS2022-workplace\C22 Ex01 Elkayam 318356136 Eviatar 313167413\Ex01_02\obj\Debug\Ex01_02.csproj.CoreCompileInputs.cache
+D:\VS2022-workplace\C22 Ex01 Elkayam 318356136 Eviatar 313167413\Ex01_02\obj\Debug\Ex01_02.exe
+D:\VS2022-workplace\C22 Ex01 Elkayam 318356136 Eviatar 313167413\Ex01_02\obj\Debug\Ex01_02.pdb
