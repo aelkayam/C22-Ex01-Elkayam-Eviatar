@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace Ex01_02
 {
@@ -15,52 +16,48 @@ namespace Ex01_02
         // print a diamond using asterisks with the given height.
         public static void PrintBasicStarDiamond(int i_Height)
         {
+            StringBuilder io_UpperPart = new StringBuilder();
+            StringBuilder io_LowerPart = new StringBuilder();
+
             if (i_Height > 0)
             {
-                printUpperTriangle(i_Height / 2, i_Height, 0);
-                printLowerTriangle(i_Height - 2, 1, i_Height / 2);
+                buildUpperPartTriangle(i_Height / 2, i_Height, 0, ref io_UpperPart);
+                buildLowerPartTriangle(i_Height - 2, 1, i_Height / 2, ref io_LowerPart);
             }
             else
             {
                 Console.WriteLine("height must be above 0");
             }
+
+            Console.Write(io_UpperPart.ToString());
+            Console.Write(io_LowerPart.ToString());
         }
 
-        // recursively print a triangle.
-        private static void printUpperTriangle(int i_Height, int i_Stars, int i_Spaces)
+        // recursively print the upper triangle.
+        private static void buildUpperPartTriangle(int i_Height, int i_Stars, int i_Spaces, ref StringBuilder io_TopTriangle)
         {
             // top of the triangle:
             if(i_Stars == 1)
             {
-                for(int j = 0; j < i_Height; j++)
-                {
-                    Console.Write(' ');
-                }
-
-                Console.WriteLine('*');
+                io_TopTriangle.Append(' ', i_Height);
+                io_TopTriangle.Append('*');
+                io_TopTriangle.AppendLine();
             }
 
             // rest of the triangle:
             else
             {
-                printUpperTriangle(i_Height, i_Stars - 2, i_Spaces + 1);
-                for (int j = 0; j < i_Spaces; j++)
-                {
-                    Console.Write(' ');
-                }
-
-                for (int k = 0; k < i_Stars; k++)
-                {
-                    Console.Write('*');
-                }
-
-                Console.WriteLine();
+                buildUpperPartTriangle(i_Height, i_Stars - 2, i_Spaces + 1, ref io_TopTriangle);
+                io_TopTriangle.Append(' ', i_Spaces);
+                io_TopTriangle.Append('*', i_Stars);
+                io_TopTriangle.AppendLine();
             }
         }
 
-        // recursively print an upside down triangle.
-        private static void printLowerTriangle(int i_Height, int i_Stars, int i_Spaces)
+        // recursively print the lower triangle.
+        private static void buildLowerPartTriangle(int i_Height, int i_Stars, int i_Spaces, ref StringBuilder i_BottomTriangle)
         {
+            // in case of a 1 asterisk diamond:
             if (i_Height < 1)
             {
                 return;
@@ -69,30 +66,18 @@ namespace Ex01_02
             // top of the triangle:
             if (i_Stars == i_Height)
             {
-                Console.Write(' ');
-                for (int j = 0; j < i_Height; j++)
-                {
-                    Console.Write('*');
-                }
-
-                Console.WriteLine(' ');
+                i_BottomTriangle.Append(' ');
+                i_BottomTriangle.Append('*', i_Height);
+                i_BottomTriangle.AppendLine();
             }
             else
             {
                 // rest of the triangle:
-                printLowerTriangle(i_Height, i_Stars + 2, i_Spaces - 1);
-                for (int j = 0; j < i_Spaces; j++)
-                {
-                    Console.Write(' ');
-                }
-
-                for (int k = 0; k < i_Stars; k++)
-                {
-                    Console.Write('*');
-                }
-
-                Console.WriteLine();
-            }
+                buildLowerPartTriangle(i_Height, i_Stars + 2, i_Spaces - 1, ref i_BottomTriangle);
+                i_BottomTriangle.Append(' ', i_Spaces);
+                i_BottomTriangle.Append('*', i_Stars);
+                i_BottomTriangle.AppendLine();
+             }
         }
     }
 }
