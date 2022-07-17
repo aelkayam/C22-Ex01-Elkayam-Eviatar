@@ -8,9 +8,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E93EDDAA-3010-4C25-9036-A020E0214ED5}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		.gitignore = .gitignore
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex01_02", "Ex01_02\Ex01_02.csproj", "{3E6A30B3-959C-4385-8D63-0C1811E367CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex01_03", "Ex01_03\Ex01_03.csproj", "{720B6C51-4222-4BD1-BA0D-0E72F16A081D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +29,10 @@ Global
 		{3E6A30B3-959C-4385-8D63-0C1811E367CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E6A30B3-959C-4385-8D63-0C1811E367CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E6A30B3-959C-4385-8D63-0C1811E367CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{720B6C51-4222-4BD1-BA0D-0E72F16A081D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{720B6C51-4222-4BD1-BA0D-0E72F16A081D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{720B6C51-4222-4BD1-BA0D-0E72F16A081D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{720B6C51-4222-4BD1-BA0D-0E72F16A081D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
