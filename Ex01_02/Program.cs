@@ -6,17 +6,24 @@ namespace Ex01_02
     {
         public static void Main()
         {
-            int diamondHeight = 3;
-            printBasicStarDiamond(diamondHeight);
+            int diamondHeight = 9;
+            PrintBasicStarDiamond(diamondHeight);
             Console.WriteLine("Press enter to exit");
             Console.ReadLine();
         }
 
         // print a diamond using asterisks with the given height.
-        private static void printBasicStarDiamond(int i_Height)
+        public static void PrintBasicStarDiamond(int i_Height)
         {
-            printUpperTriangle(i_Height / 2, i_Height, 0);
-            printLowerTriangle(i_Height - 2, 1, i_Height / 2);
+            if (i_Height > 0)
+            {
+                printUpperTriangle(i_Height / 2, i_Height, 0);
+                printLowerTriangle(i_Height - 2, 1, i_Height / 2);
+            }
+            else
+            {
+                Console.WriteLine("height must be above 0");
+            }
         }
 
         // recursively print a triangle.
@@ -54,6 +61,11 @@ namespace Ex01_02
         // recursively print an upside down triangle.
         private static void printLowerTriangle(int i_Height, int i_Stars, int i_Spaces)
         {
+            if (i_Height < 1)
+            {
+                return;
+            }
+
             // top of the triangle:
             if (i_Stars == i_Height)
             {
@@ -67,6 +79,7 @@ namespace Ex01_02
             }
             else
             {
+                // rest of the triangle:
                 printLowerTriangle(i_Height, i_Stars + 2, i_Spaces - 1);
                 for (int j = 0; j < i_Spaces; j++)
                 {
