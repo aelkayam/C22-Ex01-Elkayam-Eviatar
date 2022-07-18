@@ -58,7 +58,7 @@ numOfPalindromes);
             bool isValid;
             do
             {
-                Console.WriteLine("Please enter {}", i_Message);
+                Console.WriteLine(@"Please enter {0}", i_Message);
                 userInputString = Console.ReadLine();
                 isValid = AuthenticateString(i_InputType, i_requiredLength, userInputString);
                 if (!isValid)
@@ -84,25 +84,25 @@ numOfPalindromes);
 
                 // ex_04:
                 case eInputType.LettersOrNumbersExclusively:
-                    isValid = checkIfLettersOrNumbersExclusively(i_UserInputString);
+                    isValid = checkIfLettersOrDigitsExclusively(i_UserInputString);
                     break;
 
                 // ex_05:
                 case eInputType.integer:
-                    isValid = checkOnlyNumbers(i_UserInputString);
+                    isValid = checkOnlyDigits(i_UserInputString);
                     break;
             }
 
             return isValid && isCorrectLengh;
         }
 
-        private static bool checkIfLettersOrNumbersExclusively(string i_UserInputString)
+        private static bool checkIfLettersOrDigitsExclusively(string i_UserInputString)
         {
-            return checkOnlyLetters(i_UserInputString) || checkOnlyNumbers(i_UserInputString);
+            return checkOnlyLetters(i_UserInputString) || checkOnlyDigits(i_UserInputString);
         }
 
         // return true if the string consists only of numbers.
-        private static bool checkOnlyNumbers(string i_UserInputString)
+        private static bool checkOnlyDigits(string i_UserInputString)
         {
             bool isValid = true;
             for (int i = 0; i < i_UserInputString.Length; i++)
