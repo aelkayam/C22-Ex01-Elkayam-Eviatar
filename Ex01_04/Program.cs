@@ -9,7 +9,7 @@ namespace Ex01_04
         public static void Main()
         {
             // user input:
-            string message = "9-characters string of either English letters, or digits only";
+            string message = "a 9-characters string of either English letters, or digits only";
             string userInput = Ex01_01.Program.UserInput(eInputType.LettersOrNumbersExclusively, 9, message);
 
             // check if palindrome:

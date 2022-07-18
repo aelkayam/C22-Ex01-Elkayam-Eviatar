@@ -104,31 +104,31 @@ numOfPalindromes);
         // return true if the string consists only of numbers.
         private static bool checkOnlyDigits(string i_UserInputString)
         {
-            bool isValid = true;
+            int countValidCharacters = 0;
             for (int i = 0; i < i_UserInputString.Length; i++)
             {
-                if (char.IsLetter(i_UserInputString[i]))
+                if (char.IsDigit(i_UserInputString[i]))
                 {
-                    isValid = false;
+                    countValidCharacters++;
                 }
             }
 
-            return isValid;
+            return countValidCharacters == i_UserInputString.Length;
         }
 
         // return true if the string consists only of letters.
         private static bool checkOnlyLetters(string i_UserInputString)
         {
-            bool isValid = true;
-            for(int i = 0; i < i_UserInputString.Length; i++)
+            int countValidCharacters = 0;
+            for (int i = 0; i < i_UserInputString.Length; i++)
             {
-                if (char.IsDigit(i_UserInputString[i]))
+                if (char.IsLetter(i_UserInputString[i]))
                 {
-                    isValid = false;
+                    countValidCharacters++;
                 }
             }
 
-            return isValid;
+            return countValidCharacters == i_UserInputString.Length;
         }
 
         // return true if the string represents a binary number.
