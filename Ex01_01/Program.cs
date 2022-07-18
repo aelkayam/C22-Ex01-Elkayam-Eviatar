@@ -7,9 +7,10 @@ namespace Ex01_01
         public static void Main()
         {
             // input and authentication:
-            string firstNumber = userInput();
-            string secondNumber = userInput();
-            string thirdNumber = userInput();
+            string message = "three 7-digits binary numbers.";
+            string firstNumber = userInput("binary", 7, message);
+            string secondNumber = userInput("binary", 7, message);
+            string thirdNumber = userInput("binary", 7, message);
 
             // average zeros/ones:
             float avgZerosInInput = getAvgAppearancesOfDigit(firstNumber, secondNumber, thirdNumber, '0');
@@ -43,15 +44,15 @@ numOfPalindromes);
         }
 
         // get user input, after authentication.
-        private static string userInput()
+        private static string userInput(string eInputType, int i_requiredLength, string i_Message)
         {
             string userInputString;
             bool isValid;
             do
             {
-                Console.WriteLine("Please enter three 7-digits binary numbers.");
+                Console.WriteLine("Please enter {}", i_Message);
                 userInputString = Console.ReadLine();
-                isValid = authenticateString(userInputString);
+                isValid = authenticateString(eInputType, i_requiredLength, userInputString);
                 if (!isValid)
                 {
                     Console.WriteLine("Invalid Input! Please try again.");
@@ -61,20 +62,35 @@ numOfPalindromes);
             return userInputString;
         }
 
-        // check if the string is correct length and in binary format.
-        private static bool authenticateString(string userInputString)
+        // check if the string is correct length and in correct format.
+        private static bool authenticateString(string eInputType, int i_requiredLength, string userInputString)
         {
-            bool isCorrectLengh = userInputString.Length == 7;
-            bool isBinaryNum = true;
-            for (int i = 0; i < userInputString.Length; i++)
+            bool isCorrectLengh = userInputString.Length == i_requiredLength;
+            bool isValid = true;
+            switch (eInputType)
             {
-                if (userInputString[i] != '1' && userInputString[i] != '0')
-                {
-                    isBinaryNum = false;
-                }
+                // ex_01:
+                case "binary":
+                    for (int i = 0; i < userInputString.Length; i++)
+                    {
+                        if (userInputString[i] != '1' && userInputString[i] != '0')
+                        {
+                            isValid = false;
+                        }
+                    }
+
+                    break;
+
+                // ex_04:
+                case "lettersOnly":
+                    break;
+
+                // ex_05:
+                case "Integer":
+                    break;
             }
 
-            return isCorrectLengh && isBinaryNum;
+            return isValid && isCorrectLengh;
         }
 
         private static int countNumsDivisibleByThree(int i_FirstNumberDecimal, int i_SecondNumberDecimal, int i_ThirdNumberDecimal)
@@ -180,54 +196,23 @@ numOfPalindromes);
         }
 
         // sort three numbers in ascending order
-        private static void ascendingSort(int num1, int num2, int num3, out int first, out int second, out int third)
+        private static void ascendingSort(int i_Num1, int i_Num2, int i_Num3, out int o_BiggestNumber, out int o_MiddleNumber, out int o_SmallestNumer)
         {
-            if(num1 > num2)
+            int maxNum1Num2 = Math.Max(i_Num1, i_Num2);
+            int maxNum2Num3 = Math.Max(i_Num2, i_Num3);
+            o_BiggestNumber = Math.Max(maxNum1Num2, maxNum2Num3);
+
+            // find middle number:
+            if (o_BiggestNumber == i_Num2)
             {
-                if(num1 > num3)
-                {
-                    first = num1;
-                    if(num2 > num3)
-                    {
-                        second = num2;
-                        third = num3;
-                    }
-                    else
-                    {
-                        second = num3;
-                        third = num2;
-                    }
-                }
-                else
-                {
-                    first = num3;
-                    second = num1;
-                    third = num2;
-                }
+                o_MiddleNumber = Math.Max(i_Num1, i_Num3);
             }
             else
             {
-                if (num2 > num3)
-                {
-                    first = num2;
-                    if (num1 > num3)
-                    {
-                        second = num1;
-                        third = num3;
-                    }
-                    else
-                    {
-                        second = num3;
-                        third = num1;
-                    }
-                }
-                else
-                {
-                    first = num3;
-                    second = num2;
-                    third = num1;
-                }
+                o_MiddleNumber = Math.Min(maxNum2Num3, maxNum1Num2);
             }
+
+            o_SmallestNumer = Math.Min(Math.Min(i_Num1, i_Num2), i_Num3);
         }
     }
 }
