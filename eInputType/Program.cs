@@ -1,2 +1,7 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿public enum eInputType
+{
+    Numbers,
+    Binary,
+    Letters,
+    LettersAndNumbers
+}
