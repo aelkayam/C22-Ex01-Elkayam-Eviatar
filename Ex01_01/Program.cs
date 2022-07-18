@@ -8,9 +8,9 @@ namespace Ex01_01
         {
             // input and authentication:
             string message = "three 7-digits binary numbers.";
-            string firstNumber = userInput("binary", 7, message);
-            string secondNumber = userInput("binary", 7, message);
-            string thirdNumber = userInput("binary", 7, message);
+            string firstNumber = UserInput("binary", 7, message);
+            string secondNumber = UserInput("binary", 7, message);
+            string thirdNumber = UserInput("binary", 7, message);
 
             // average zeros/ones:
             float avgZerosInInput = getAvgAppearancesOfDigit(firstNumber, secondNumber, thirdNumber, '0');
@@ -44,7 +44,7 @@ numOfPalindromes);
         }
 
         // get user input, after authentication.
-        private static string userInput(string eInputType, int i_requiredLength, string i_Message)
+        public static string UserInput(string eInputType, int i_requiredLength, string i_Message)
         {
             string userInputString;
             bool isValid;
@@ -52,7 +52,7 @@ numOfPalindromes);
             {
                 Console.WriteLine("Please enter {}", i_Message);
                 userInputString = Console.ReadLine();
-                isValid = authenticateString(eInputType, i_requiredLength, userInputString);
+                isValid = AuthenticateString(eInputType, i_requiredLength, userInputString);
                 if (!isValid)
                 {
                     Console.WriteLine("Invalid Input! Please try again.");
@@ -63,7 +63,7 @@ numOfPalindromes);
         }
 
         // check if the string is correct length and in correct format.
-        private static bool authenticateString(string eInputType, int i_requiredLength, string userInputString)
+        public static bool AuthenticateString(string eInputType, int i_requiredLength, string userInputString)
         {
             bool isCorrectLengh = userInputString.Length == i_requiredLength;
             bool isValid = true;
@@ -96,17 +96,17 @@ numOfPalindromes);
         private static int countNumsDivisibleByThree(int i_FirstNumberDecimal, int i_SecondNumberDecimal, int i_ThirdNumberDecimal)
         {
             int numOfDivisibleByThree = 0;
-            if (divisibleByThree(i_FirstNumberDecimal))
+            if (DivisibleByThree(i_FirstNumberDecimal))
             {
                 numOfDivisibleByThree++;
             }
 
-            if (divisibleByThree(i_SecondNumberDecimal))
+            if (DivisibleByThree(i_SecondNumberDecimal))
             {
                 numOfDivisibleByThree++;
             }
 
-            if (divisibleByThree(i_ThirdNumberDecimal))
+            if (DivisibleByThree(i_ThirdNumberDecimal))
             {
                 numOfDivisibleByThree++;
             }
@@ -115,7 +115,7 @@ numOfPalindromes);
         }
 
         // return true if the number is divisible by 3.
-        private static bool divisibleByThree(int i_DecimalNum)
+        public static bool DivisibleByThree(int i_DecimalNum)
         {
             int remainder = i_DecimalNum % 3;
             return remainder == 0;
