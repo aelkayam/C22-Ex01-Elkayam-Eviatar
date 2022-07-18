@@ -396,3 +396,8 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/Exe01_01/Ex01_01.csproj
+/Exe01_01/Ex01_02.csproj
+/Exe01_01/Ex01_03.csproj
+/Exe01_04/Ex01_04.csproj
+/eInputType/eInputType.csproj

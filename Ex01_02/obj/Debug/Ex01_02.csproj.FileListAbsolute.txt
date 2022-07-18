@@ -6,3 +6,11 @@ D:\VS2022-workplace\C22 Ex01 Elkayam 318356136 Eviatar 313167413\Ex01_02\obj\Deb
 D:\VS2022-workplace\C22 Ex01 Elkayam 318356136 Eviatar 313167413\Ex01_02\obj\Debug\Ex01_02.csproj.CoreCompileInputs.cache
 D:\VS2022-workplace\C22 Ex01 Elkayam 318356136 Eviatar 313167413\Ex01_02\obj\Debug\Ex01_02.exe
 D:\VS2022-workplace\C22 Ex01 Elkayam 318356136 Eviatar 313167413\Ex01_02\obj\Debug\Ex01_02.pdb
+C:\Users\eviatar\Source\Repos\C22-Ex01-Elkayam-318356136-Eviatar-313167413\Ex01_02\bin\Debug\Ex01_02.exe.config
+C:\Users\eviatar\Source\Repos\C22-Ex01-Elkayam-318356136-Eviatar-313167413\Ex01_02\bin\Debug\Ex01_02.exe
+C:\Users\eviatar\Source\Repos\C22-Ex01-Elkayam-318356136-Eviatar-313167413\Ex01_02\bin\Debug\Ex01_02.pdb
+C:\Users\eviatar\Source\Repos\C22-Ex01-Elkayam-318356136-Eviatar-313167413\Ex01_02\obj\Debug\Ex01_02.csproj.AssemblyReference.cache
+C:\Users\eviatar\Source\Repos\C22-Ex01-Elkayam-318356136-Eviatar-313167413\Ex01_02\obj\Debug\Ex01_02.csproj.SuggestedBindingRedirects.cache
+C:\Users\eviatar\Source\Repos\C22-Ex01-Elkayam-318356136-Eviatar-313167413\Ex01_02\obj\Debug\Ex01_02.csproj.CoreCompileInputs.cache
+C:\Users\eviatar\Source\Repos\C22-Ex01-Elkayam-318356136-Eviatar-313167413\Ex01_02\obj\Debug\Ex01_02.exe
+C:\Users\eviatar\Source\Repos\C22-Ex01-Elkayam-318356136-Eviatar-313167413\Ex01_02\obj\Debug\Ex01_02.pdb
