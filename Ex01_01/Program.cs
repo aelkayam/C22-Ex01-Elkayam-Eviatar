@@ -2,15 +2,23 @@
 
 namespace Ex01_01
 {
-    internal class Program
+    // input types for Ex01_01, Ex01_04, Ex01_05.
+    public enum eInputType
+    {
+        binary,
+        LettersOrNumbersExclusively,
+        integer,
+    }
+
+    public class Program
     {
         public static void Main()
         {
             // input and authentication:
             string message = "three 7-digits binary numbers.";
-            string firstNumber = UserInput("binary", 7, message);
-            string secondNumber = UserInput("binary", 7, message);
-            string thirdNumber = UserInput("binary", 7, message);
+            string firstNumber = UserInput(eInputType.binary, 7, message);
+            string secondNumber = UserInput(eInputType.binary, 7, message);
+            string thirdNumber = UserInput(eInputType.binary, 7, message);
 
             // average zeros/ones:
             float avgZerosInInput = getAvgAppearancesOfDigit(firstNumber, secondNumber, thirdNumber, '0');
@@ -44,7 +52,7 @@ numOfPalindromes);
         }
 
         // get user input, after authentication.
-        public static string UserInput(string eInputType, int i_requiredLength, string i_Message)
+        public static string UserInput(eInputType i_InputType, int i_requiredLength, string i_Message)
         {
             string userInputString;
             bool isValid;
@@ -52,7 +60,7 @@ numOfPalindromes);
             {
                 Console.WriteLine("Please enter {}", i_Message);
                 userInputString = Console.ReadLine();
-                isValid = AuthenticateString(eInputType, i_requiredLength, userInputString);
+                isValid = AuthenticateString(i_InputType, i_requiredLength, userInputString);
                 if (!isValid)
                 {
                     Console.WriteLine("Invalid Input! Please try again.");
@@ -63,34 +71,79 @@ numOfPalindromes);
         }
 
         // check if the string is correct length and in correct format.
-        public static bool AuthenticateString(string eInputType, int i_requiredLength, string userInputString)
+        public static bool AuthenticateString(eInputType i_InputType, int i_requiredLength, string i_UserInputString)
         {
-            bool isCorrectLengh = userInputString.Length == i_requiredLength;
+            bool isCorrectLengh = i_UserInputString.Length == i_requiredLength;
             bool isValid = true;
-            switch (eInputType)
+            switch (i_InputType)
             {
                 // ex_01:
-                case "binary":
-                    for (int i = 0; i < userInputString.Length; i++)
-                    {
-                        if (userInputString[i] != '1' && userInputString[i] != '0')
-                        {
-                            isValid = false;
-                        }
-                    }
-
+                case eInputType.binary:
+                    isValid = checkIfBinary(i_UserInputString);
                     break;
 
                 // ex_04:
-                case "lettersOnly":
+                case eInputType.LettersOrNumbersExclusively:
+                    isValid = checkIfLettersOrNumbersExclusively(i_UserInputString);
                     break;
 
                 // ex_05:
-                case "Integer":
+                case eInputType.integer:
+                    isValid = checkOnlyNumbers(i_UserInputString);
                     break;
             }
 
             return isValid && isCorrectLengh;
+        }
+
+        private static bool checkIfLettersOrNumbersExclusively(string i_UserInputString)
+        {
+            return checkOnlyLetters(i_UserInputString) || checkOnlyNumbers(i_UserInputString);
+        }
+
+        // return true if the string consists only of numbers.
+        private static bool checkOnlyNumbers(string i_UserInputString)
+        {
+            bool isValid = true;
+            for (int i = 0; i < i_UserInputString.Length; i++)
+            {
+                if (char.IsLetter(i_UserInputString[i]))
+                {
+                    isValid = false;
+                }
+            }
+
+            return isValid;
+        }
+
+        // return true if the string consists only of letters.
+        private static bool checkOnlyLetters(string i_UserInputString)
+        {
+            bool isValid = true;
+            for(int i = 0; i < i_UserInputString.Length; i++)
+            {
+                if (char.IsDigit(i_UserInputString[i]))
+                {
+                    isValid = false;
+                }
+            }
+
+            return isValid;
+        }
+
+        // return true if the string represents a binary number.
+        private static bool checkIfBinary(string i_UserInputString)
+        {
+            bool isValid = true;
+            for (int i = 0; i < i_UserInputString.Length; i++)
+            {
+                if (i_UserInputString[i] != '1' && i_UserInputString[i] != '0')
+                {
+                    isValid = false;
+                }
+            }
+
+            return isValid;
         }
 
         private static int countNumsDivisibleByThree(int i_FirstNumberDecimal, int i_SecondNumberDecimal, int i_ThirdNumberDecimal)
@@ -142,7 +195,7 @@ numOfPalindromes);
             return numOfPalindromes;
         }
 
-        // return true if the number is a palindrome
+        // return true if the number is a palindrome.
         private static bool isPalindrome(int i_Num)
         {
             int reveredNum = 0;
