@@ -33,7 +33,7 @@ namespace Ex01_01
             int numOfDivisibleByThree = countNumsDivisibleByThree(firstNumberDecimal, secondNumberDecimal, thirdNumberDecimal);
 
             // check how many are palindromes:
-            int numOfPalindromes = countPalindromes(firstNumber, secondNumber, thirdNumber);
+            int numOfPalindromes = countPalindromes(firstNumberDecimal, secondNumberDecimal, thirdNumberDecimal);
 
             ascendingSort(firstNumberDecimal, secondNumberDecimal, thirdNumberDecimal, out int biggestNum, out int midNum, out int smallestNum);
 
@@ -177,20 +177,20 @@ numOfPalindromes);
         }
 
         // return how many are palindromes
-        private static int countPalindromes(string i_FirstNumber, string i_SecondNumber, string i_ThirdNumber)
+        private static int countPalindromes(int i_FirstNumber, int i_SecondNumber, int i_ThirdNumber)
         {
             int numOfPalindromes = 0;
-            if (IsPalindrome(i_FirstNumber))
+            if (IsPalindrome(i_FirstNumber.ToString()))
             {
                 numOfPalindromes++;
             }
 
-            if (IsPalindrome(i_SecondNumber))
+            if (IsPalindrome(i_SecondNumber.ToString()))
             {
                 numOfPalindromes++;
             }
 
-            if (IsPalindrome(i_ThirdNumber))
+            if (IsPalindrome(i_ThirdNumber.ToString()))
             {
                 numOfPalindromes++;
             }
