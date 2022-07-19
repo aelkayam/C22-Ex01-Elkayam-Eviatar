@@ -52,9 +52,9 @@ namespace Ex01_05
                 }
             }
 
-            StringBuilder strResultReturn = new StringBuilder("In the number there are no digit divisible by 3");
+            StringBuilder strResultReturn = new StringBuilder("In the number there are no digits divisible by 3");
 
-            if (0 != counterDivisibleByThree)
+            if (counterDivisibleByThree != 0)
             {
                 strResultReturn.Replace("no", counterDivisibleByThree.ToString());
             }
@@ -92,7 +92,7 @@ namespace Ex01_05
             int numOfSmallerThanUnity = configDigitsSmallerThanUnity(subStringToCheck, unitNum);
 
             StringBuilder strResultReturn = new StringBuilder("There are no digits that are smaller than the unity digit");
-            if (0 != numOfSmallerThanUnity)
+            if (numOfSmallerThanUnity != 0)
             {
                 strResultReturn.Replace("no", numOfSmallerThanUnity.ToString());
             }

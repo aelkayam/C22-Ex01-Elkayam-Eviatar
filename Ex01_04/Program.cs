@@ -49,7 +49,7 @@ namespace Ex01_04
         {
             int counterLowercase = calculateNumOfLowercaseLetters(i_StringOfLetters);
             string numOfCounterLowercaseOrNot;
-            if (0 == counterLowercase)
+            if (counterLowercase == 0)
             {
                 numOfCounterLowercaseOrNot = "no";
             }
