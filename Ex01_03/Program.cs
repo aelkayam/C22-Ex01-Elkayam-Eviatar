@@ -6,8 +6,11 @@ namespace Ex01_03
     {
         public static void Main()
         {
+            // user input:
             int diamondHeight = userInput();
             Ex01_02.Program.PrintBasicStarDiamond(diamondHeight);
+
+            // exit:
             Console.WriteLine("Press enter to exit");
             Console.ReadLine();
         }
@@ -47,7 +50,7 @@ namespace Ex01_03
             return isNumber;
         }
 
-        // return true if even
+        // return true if even.
         private static bool isEven(int num)
         {
             return num % 2 == 0;

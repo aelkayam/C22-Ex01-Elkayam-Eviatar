@@ -13,7 +13,7 @@ namespace Ex01_02
             Console.ReadLine();
         }
 
-        // print a diamond using asterisks with the given height.
+        // print a diamond using stars with the given height.
         public static void PrintBasicStarDiamond(int i_Height)
         {
             StringBuilder io_UpperPart = new StringBuilder();
@@ -57,7 +57,7 @@ namespace Ex01_02
         // recursively print the lower triangle.
         private static void buildLowerPartTriangle(int i_Height, int i_Stars, int i_Spaces, ref StringBuilder i_BottomTriangle)
         {
-            // in case of a 1 asterisk diamond:
+            // in case of a 1 star diamond:
             if (i_Height < 1)
             {
                 return;

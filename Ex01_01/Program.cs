@@ -96,6 +96,7 @@ numOfPalindromes);
             return isValid && isCorrectLengh;
         }
 
+        // return true if string consists of only number OR only letters.
         private static bool checkIfLettersOrDigitsExclusively(string i_UserInputString)
         {
             return checkOnlyLetters(i_UserInputString) || checkOnlyDigits(i_UserInputString);
@@ -146,6 +147,7 @@ numOfPalindromes);
             return isValid;
         }
 
+        // return how many of the parameters are divisible by 3.
         private static int countNumsDivisibleByThree(int i_FirstNumberDecimal, int i_SecondNumberDecimal, int i_ThirdNumberDecimal)
         {
             int numOfDivisibleByThree = 0;
