@@ -15,40 +15,40 @@ namespace Ex01_03
         // get valid user input.
         private static int userInput()
         {
-            bool isValid;
+            bool v_isValid;
             int userInputInt;
+
             do
             {
                 Console.WriteLine("Please enter the height for the diamond:");
                 string userInputString = Console.ReadLine();
-                isValid = authenticate(userInputString, out userInputInt);
-                if (!isValid)
+                v_isValid = authenticate(userInputString, out userInputInt);
+                if (!v_isValid)
                 {
                     Console.WriteLine("Invalid input! please try again.");
                 }
             }
-            while (!isValid);
+            while (!v_isValid);
 
             return userInputInt;
         }
 
-        // validate user input.
+        // validation user input.
         private static bool authenticate(string userInputString, out int userInputInt)
         {
-            bool isNumber = int.TryParse(userInputString, out userInputInt);
-
+            bool v_isNumber = int.TryParse(userInputString, out userInputInt);
             // case of odd height:
-            if (isNumber && isEven(userInputInt))
+            if (v_isNumber && IsEven(userInputInt))
             {
-                    Console.WriteLine("Adding height to make it odd");
-                    userInputInt++;
+                Console.WriteLine("Adding height to make it odd");
+                userInputInt++;
             }
 
-            return isNumber;
+            return v_isNumber;
         }
 
         // return true if even
-        private static bool isEven(int num)
+        public static bool IsEven(int num)
         {
             return num % 2 == 0;
         }

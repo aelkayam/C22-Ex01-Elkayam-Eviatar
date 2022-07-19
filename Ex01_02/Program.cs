@@ -7,8 +7,9 @@ namespace Ex01_02
     {
         public static void Main()
         {
-            int diamondHeight = 9;
-            PrintBasicStarDiamond(diamondHeight);
+            const int k_diamondHeight = 9;
+
+            PrintBasicStarDiamond(k_diamondHeight);
             Console.WriteLine("Press enter to exit");
             Console.ReadLine();
         }
@@ -25,7 +26,7 @@ namespace Ex01_02
                 buildLowerPartTriangle(i_Height - 2, 1, i_Height / 2, ref io_LowerPart);
             }
             else
-            {
+            { 
                 Console.WriteLine("height must be above 0");
             }
 
@@ -52,6 +53,7 @@ namespace Ex01_02
                 io_TopTriangle.Append('*', i_Stars);
                 io_TopTriangle.AppendLine();
             }
+
         }
 
         // recursively print the lower triangle.
@@ -78,6 +80,7 @@ namespace Ex01_02
                 i_BottomTriangle.Append('*', i_Stars);
                 i_BottomTriangle.AppendLine();
              }
+
         }
     }
 }

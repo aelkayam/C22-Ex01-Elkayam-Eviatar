@@ -14,7 +14,15 @@ namespace Ex01_01
     {
         public static void Main()
         {
+            Binary,
+            Numbers,
+            Letters,
+            LettersAndNumbers,
+        }
+        public static void Main()
+        {// to mach in main 
             // input and authentication:
+            const int k_requiredLength = 7;
             string message = "three 7-digits binary numbers.";
             string firstNumber = UserInput(eInputType.binary, 7, message);
             string secondNumber = UserInput(eInputType.binary, 7, message);
@@ -51,11 +59,13 @@ numOfPalindromes);
             Console.ReadLine();
         }
 
+
         // get user input, after authentication.
         public static string UserInput(eInputType i_InputType, int i_requiredLength, string i_Message)
         {
             string userInputString;
-            bool isValid;
+            bool v_isValid;
+
             do
             {
                 Console.WriteLine(@"Please enter {0}", i_Message);
@@ -66,7 +76,7 @@ numOfPalindromes);
                     Console.WriteLine("Invalid Input! Please try again.");
                 }
             }
-            while (!isValid);
+            while (!v_isValid);
             return userInputString;
         }
 
@@ -93,7 +103,7 @@ numOfPalindromes);
                     break;
             }
 
-            return isValid && isCorrectLengh;
+            return v_isValid && v_isCorrectLengh;
         }
 
         private static bool checkIfLettersOrDigitsExclusively(string i_UserInputString)
@@ -149,6 +159,7 @@ numOfPalindromes);
         private static int countNumsDivisibleByThree(int i_FirstNumberDecimal, int i_SecondNumberDecimal, int i_ThirdNumberDecimal)
         {
             int numOfDivisibleByThree = 0;
+
             if (DivisibleByThree(i_FirstNumberDecimal))
             {
                 numOfDivisibleByThree++;
@@ -171,6 +182,7 @@ numOfPalindromes);
         public static bool DivisibleByThree(int i_DecimalNum)
         {
             int remainder = i_DecimalNum % 3;
+
             return remainder == 0;
         }
 
@@ -213,11 +225,12 @@ numOfPalindromes);
 
         // convert binary to decimal.
         private static int convertToDecimal(int i_BinaryNum)
-        {
+        {       // can do it betr mast have a fonc not a goo name  BinaryToDecimal 
             int digit;
             int digitPlacement = 0;
             int decimalResult = 0;
-            while(i_BinaryNum > 0)
+
+            while (i_BinaryNum > 0)
             {
                 digit = i_BinaryNum % 10;
                 decimalResult += digit * (int)Math.Pow(2, digitPlacement);
@@ -230,16 +243,18 @@ numOfPalindromes);
 
         // calculate the average appearances of a digit in three numbers.
         private static float getAvgAppearancesOfDigit(string i_FirstNumber, string i_SecondNumber, string i_ThirdNumber, char i_Digit)
-        {
+        {// to mach in one line neet to do the the func whit ref 
             int totalZeros = countDigits(i_FirstNumber, i_Digit) + countDigits(i_SecondNumber, i_Digit) + countDigits(i_ThirdNumber, i_Digit);
+            
             return totalZeros / 3f;
         }
 
-        // count instances of a digit in a number.
+        // count instances of a digit in a number. no a good name 
         private static int countDigits(string i_Number, char i_Digit)
         {
             int amountOfDigit = 0;
-            for(int i = 0; i < i_Number.Length; i++)
+
+            for (int i = 0; i < i_Number.Length; i++)
             {
                 if (i_Number[i] == i_Digit)
                 {
@@ -258,6 +273,7 @@ numOfPalindromes);
             o_BiggestNumber = Math.Max(maxNum1Num2, maxNum2Num3);
 
             // find middle number:
+            // need to do it in bool ver 
             if (o_BiggestNumber == i_Num2)
             {
                 o_MiddleNumber = Math.Max(i_Num1, i_Num3);
