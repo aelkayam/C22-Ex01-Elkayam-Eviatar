@@ -23,12 +23,22 @@ namespace Ex01_05
             Console.ReadLine();
         }
 
-        public static string ConfigAvgDigits(string input)
+        // return average of digits (string).
+        public static string ConfigAvgDigits(string i_NumStrToFingAvg)
         {
-            return string.Format("The average digit is {0}", input);
+                int len = i_NumStrToFingAvg.Length;
+                int sumOfDigit = 0;
+
+                for (int i = 0; i < len; i++)
+                {
+                    sumOfDigit += stringToDigit(i_NumStrToFingAvg, i);
+                }
+
+                double avgDigit = sumOfDigit / (double)len;
+                return string.Format("The average of digits is {0}", avgDigit);
         }
 
-        // get how many digits are divisible by 3.
+        // get how many digits are divisible by 3 (string).
         public static string ConfigHowManDivByThree(string i_inputStr)
         {
             int counterDivisibleByThree = 0;
