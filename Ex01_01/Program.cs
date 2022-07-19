@@ -2,16 +2,24 @@
 
 namespace Ex01_01
 {
-    internal class Program
+    public  class Program
     {
-        public static void Main()
+        public enum eInputType
         {
+            Binary,
+            Numbers,
+            Letters,
+            LettersAndNumbers,
+        }
+        public static void Main()
+        {// to mach in main 
             // input and authentication:
+            const int k_requiredLength = 7;
             string message = "three 7-digits binary numbers.";
-            string firstNumber = UserInput("binary", 7, message);
-            string secondNumber = UserInput("binary", 7, message);
-            string thirdNumber = UserInput("binary", 7, message);
-
+            eInputType type = eInputType.Binary;
+            string firstNumber = UserInput(type, k_requiredLength, message);
+            string secondNumber = UserInput(type, k_requiredLength, message);
+            string thirdNumber = UserInput(type, k_requiredLength, message);
             // average zeros/ones:
             float avgZerosInInput = getAvgAppearancesOfDigit(firstNumber, secondNumber, thirdNumber, '0');
             float avgOnesInInput = getAvgAppearancesOfDigit(firstNumber, secondNumber, thirdNumber, '1');
@@ -43,59 +51,68 @@ numOfPalindromes);
             Console.ReadLine();
         }
 
+
         // get user input, after authentication.
-        public static string UserInput(string eInputType, int i_requiredLength, string i_Message)
+        public static string UserInput(eInputType eInputType, int i_requiredLength, string i_Message)
         {
             string userInputString;
-            bool isValid;
+            bool v_isValid;
+
             do
             {
-                Console.WriteLine("Please enter {}", i_Message);
+                Console.WriteLine("Please enter {0}", i_Message);
                 userInputString = Console.ReadLine();
-                isValid = AuthenticateString(eInputType, i_requiredLength, userInputString);
-                if (!isValid)
+                v_isValid = AuthenticateString(eInputType, i_requiredLength, userInputString);
+                if (!v_isValid)
                 {
                     Console.WriteLine("Invalid Input! Please try again.");
                 }
             }
-            while (!isValid);
+            while (!v_isValid);
             return userInputString;
         }
 
         // check if the string is correct length and in correct format.
-        public static bool AuthenticateString(string eInputType, int i_requiredLength, string userInputString)
+        public static bool AuthenticateString(eInputType type, int i_requiredLength, string userInputString)
         {
-            bool isCorrectLengh = userInputString.Length == i_requiredLength;
-            bool isValid = true;
-            switch (eInputType)
+            bool v_isCorrectLengh = userInputString.Length == i_requiredLength;
+            bool v_isValid = true;
+
+            switch (type)
             {
                 // ex_01:
-                case "binary":
+                case eInputType.Binary:
                     for (int i = 0; i < userInputString.Length; i++)
                     {
                         if (userInputString[i] != '1' && userInputString[i] != '0')
                         {
-                            isValid = false;
+                            v_isValid = false;
+                            break;
                         }
                     }
-
                     break;
-
                 // ex_04:
-                case "lettersOnly":
+                case eInputType.Letters:
+
                     break;
 
                 // ex_05:
-                case "Integer":
+                case eInputType.Numbers:
+
+                    break;
+
+                case eInputType.LettersAndNumbers:
                     break;
             }
 
-            return isValid && isCorrectLengh;
+            return v_isValid && v_isCorrectLengh;
         }
+
 
         private static int countNumsDivisibleByThree(int i_FirstNumberDecimal, int i_SecondNumberDecimal, int i_ThirdNumberDecimal)
         {
             int numOfDivisibleByThree = 0;
+
             if (DivisibleByThree(i_FirstNumberDecimal))
             {
                 numOfDivisibleByThree++;
@@ -118,23 +135,26 @@ numOfPalindromes);
         public static bool DivisibleByThree(int i_DecimalNum)
         {
             int remainder = i_DecimalNum % 3;
+
             return remainder == 0;
         }
 
         private static int countPalindromes(int i_FirstNumberDecimal, int i_SecondNumberDecimal, int i_ThirdNumberDecimal)
         {
             int numOfPalindromes = 0;
-            if (isPalindrome(i_FirstNumberDecimal))
+            string strForChakPol = i_FirstNumberDecimal.ToString();
+
+            if (isPalindrome(strForChakPol))
             {
                 numOfPalindromes++;
             }
-
-            if (isPalindrome(i_SecondNumberDecimal))
+            strForChakPol= i_SecondNumberDecimal.ToString();
+            if (isPalindrome(strForChakPol))
             {
                 numOfPalindromes++;
             }
-
-            if (isPalindrome(i_ThirdNumberDecimal))
+            strForChakPol = i_ThirdNumberDecimal.ToString();
+            if (isPalindrome(strForChakPol))
             {
                 numOfPalindromes++;
             }
@@ -143,26 +163,32 @@ numOfPalindromes);
         }
 
         // return true if the number is a palindrome
-        private static bool isPalindrome(int i_Num)
+        public static bool isPalindrome(string i_InputString)
         {
-            int reveredNum = 0;
-            int originalNum = i_Num;
-            while(i_Num > 0)
+            int len = i_InputString.Length;
+            bool v_isPalindrome = len > 1;
+
+            if (v_isPalindrome)
             {
-                reveredNum = (reveredNum * 10) + (i_Num % 10);
-                i_Num /= 10;
+                bool v_isEdgesEquals = i_InputString[0].Equals(i_InputString[len - 1]);
+                if (v_isEdgesEquals)
+                {
+                    string subInputStr = i_InputString.Substring(1, len - 1 );
+                    v_isPalindrome = isPalindrome(subInputStr);
+                }
             }
 
-            return reveredNum == originalNum;
+            return v_isPalindrome;
         }
 
         // convert binary to decimal.
         private static int convertToDecimal(int i_BinaryNum)
-        {
+        {       // can do it betr mast have a fonc not a goo name  BinaryToDecimal 
             int digit;
             int digitPlacement = 0;
             int decimalResult = 0;
-            while(i_BinaryNum > 0)
+
+            while (i_BinaryNum > 0)
             {
                 digit = i_BinaryNum % 10;
                 decimalResult += digit * (int)Math.Pow(2, digitPlacement);
@@ -175,16 +201,18 @@ numOfPalindromes);
 
         // calculate the average appearances of a digit in three numbers.
         private static float getAvgAppearancesOfDigit(string i_FirstNumber, string i_SecondNumber, string i_ThirdNumber, char i_Digit)
-        {
+        {// to mach in one line neet to do the the func whit ref 
             int totalZeros = countDigits(i_FirstNumber, i_Digit) + countDigits(i_SecondNumber, i_Digit) + countDigits(i_ThirdNumber, i_Digit);
+            
             return totalZeros / 3f;
         }
 
-        // count instances of a digit in a number.
+        // count instances of a digit in a number. no a good name 
         private static int countDigits(string i_Number, char i_Digit)
         {
             int amountOfDigit = 0;
-            for(int i = 0; i < i_Number.Length; i++)
+
+            for (int i = 0; i < i_Number.Length; i++)
             {
                 if (i_Number[i] == i_Digit)
                 {
@@ -203,6 +231,7 @@ numOfPalindromes);
             o_BiggestNumber = Math.Max(maxNum1Num2, maxNum2Num3);
 
             // find middle number:
+            // need to do it in bool ver 
             if (o_BiggestNumber == i_Num2)
             {
                 o_MiddleNumber = Math.Max(i_Num1, i_Num3);
