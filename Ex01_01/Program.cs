@@ -33,7 +33,7 @@ namespace Ex01_01
             int numOfDivisibleByThree = countNumsDivisibleByThree(firstNumberDecimal, secondNumberDecimal, thirdNumberDecimal);
 
             // check how many are palindromes:
-            int numOfPalindromes = countPalindromes(firstNumberDecimal, secondNumberDecimal, thirdNumberDecimal);
+            int numOfPalindromes = countPalindromes(firstNumber, secondNumber, thirdNumber);
 
             ascendingSort(firstNumberDecimal, secondNumberDecimal, thirdNumberDecimal, out int biggestNum, out int midNum, out int smallestNum);
 
@@ -174,20 +174,21 @@ numOfPalindromes);
             return remainder == 0;
         }
 
-        private static int countPalindromes(int i_FirstNumberDecimal, int i_SecondNumberDecimal, int i_ThirdNumberDecimal)
+        // return how many are palindromes
+        private static int countPalindromes(string i_FirstNumber, string i_SecondNumber, string i_ThirdNumber)
         {
             int numOfPalindromes = 0;
-            if (isPalindrome(i_FirstNumberDecimal))
+            if (IsPalindrome(i_FirstNumber))
             {
                 numOfPalindromes++;
             }
 
-            if (isPalindrome(i_SecondNumberDecimal))
+            if (IsPalindrome(i_SecondNumber))
             {
                 numOfPalindromes++;
             }
 
-            if (isPalindrome(i_ThirdNumberDecimal))
+            if (IsPalindrome(i_ThirdNumber))
             {
                 numOfPalindromes++;
             }
@@ -195,18 +196,19 @@ numOfPalindromes);
             return numOfPalindromes;
         }
 
-        // return true if the number is a palindrome.
-        private static bool isPalindrome(int i_Num)
+        // return true if the string is a palindrome.
+        public static bool IsPalindrome(string i_String)
         {
-            int reveredNum = 0;
-            int originalNum = i_Num;
-            while(i_Num > 0)
+            if (i_String.Length < 2)
             {
-                reveredNum = (reveredNum * 10) + (i_Num % 10);
-                i_Num /= 10;
+                return true;
             }
-
-            return reveredNum == originalNum;
+            else
+            {
+                bool bothEndsEqual = i_String[0].Equals(i_String[i_String.Length - 1]);
+                string innerString = i_String.Substring(1, i_String.Length - 2);
+                return bothEndsEqual && IsPalindrome(innerString);
+            }
         }
 
         // convert binary to decimal.
