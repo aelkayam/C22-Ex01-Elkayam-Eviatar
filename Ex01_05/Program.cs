@@ -16,16 +16,16 @@ namespace Ex01_05
             Console.WriteLine(ConfigDigitsSmallerSmaller(input));
             Console.WriteLine(findMaxDigit(input));
             Console.WriteLine(ConfigHowManDivByThree(input));
-            Console.WriteLine(configAvgDigits(input));
+            Console.WriteLine(ConfigAvgDigits(input));
 
             // exit:
             Console.WriteLine("Press enter to exit");
             Console.ReadLine();
         }
 
-        private static bool configAvgDigits(string input)
+        public static string ConfigAvgDigits(string input)
         {
-            throw new NotImplementedException();
+            return string.Format("The average digit is {0}", input);
         }
 
         // get how many digits are divisible by 3.
