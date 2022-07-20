@@ -9,8 +9,8 @@ namespace Ex01_04
         {
             // user input:
             const int k_RequiredLength = 9;
-            string message = "9 characters, either letters only (uppercase or lowercase) or numbers only";
-            string input = Ex01_01.Program.UserInput(Ex01_01.eInputType.LettersOrNumbersExclusively, k_RequiredLength, message);
+            string message = string.Format("{0} characters, either letters only (uppercase or lowercase) or numbers only", k_RequiredLength);
+            string input = Ex01_01.Program.GetUserInput(Ex01_01.eInputType.LettersOrNumbersExclusively, k_RequiredLength, message);
 
             // check divisibility by 3 or how many lowercase letters:
             bool isNumber = int.TryParse(input, out int inputNum);

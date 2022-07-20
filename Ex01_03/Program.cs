@@ -7,7 +7,7 @@ namespace Ex01_03
         public static void Main()
         {
             // user input:
-            int diamondHeight = userInput();
+            int diamondHeight = getUserInputForDiamondHeight();
             Ex01_02.Program.PrintBasicStarDiamond(diamondHeight);
 
             // exit:
@@ -16,7 +16,7 @@ namespace Ex01_03
         }
 
         // get valid user input.
-        private static int userInput()
+        private static int getUserInputForDiamondHeight()
         {
             bool isValid;
             int userInputInt;

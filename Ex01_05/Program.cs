@@ -9,11 +9,11 @@ namespace Ex01_05
         {
             // Receiving input from the user:
             const int k_RequiredLength = 9;
-            string message = "an integer with 9 digits";
-            string input = Ex01_01.Program.UserInput(Ex01_01.eInputType.integer, k_RequiredLength, message);
+            string message = string.Format("an integer with {0} digits", k_RequiredLength);
+            string input = Ex01_01.Program.GetUserInput(Ex01_01.eInputType.integer, k_RequiredLength, message);
 
             // Performing and printing functions:
-            Console.WriteLine(ConfigDigitsSmallerSmaller(input));
+            Console.WriteLine(ConfigDigitsSmallerThanLast(input));
             Console.WriteLine(findMaxDigit(input));
             Console.WriteLine(ConfigHowManDivByThree(input));
             Console.WriteLine(ConfigAvgDigits(input));
@@ -23,22 +23,22 @@ namespace Ex01_05
             Console.ReadLine();
         }
 
-        // return average of digits (string).
         public static string ConfigAvgDigits(string i_NumStrToFingAvg)
         {
-                int len = i_NumStrToFingAvg.Length;
-                int sumOfDigit = 0;
+            int len = i_NumStrToFingAvg.Length;
+            int sumOfDigit = 0;
 
-                for (int i = 0; i < len; i++)
-                {
-                    sumOfDigit += stringToDigit(i_NumStrToFingAvg, i);
-                }
+            for (int i = 0; i < len; i++)
+            {
+                sumOfDigit += stringToDigit(i_NumStrToFingAvg, i);
+            }
 
-                double avgDigit = sumOfDigit / (double)len;
-                return string.Format("The average of digits is {0}", avgDigit);
+            double avgDigit = sumOfDigit / (double)len;
+
+            return string.Format("The average digit is {0}", avgDigit);
         }
 
-        // get how many digits are divisible by 3 (string).
+        // get how many digits are divisible by 3.
         public static string ConfigHowManDivByThree(string i_inputStr)
         {
             int counterDivisibleByThree = 0;
@@ -52,7 +52,7 @@ namespace Ex01_05
                 }
             }
 
-            StringBuilder strResultReturn = new StringBuilder("In the number there are no digits divisible by 3");
+            StringBuilder strResultReturn = new StringBuilder("In the number there are no digit divisible by 3");
 
             if (counterDivisibleByThree != 0)
             {
@@ -82,19 +82,19 @@ namespace Ex01_05
         }
 
         // returns how many digits smaller than the ones digit (string).
-        public static string ConfigDigitsSmallerSmaller(string i_InputNum)
+        public static string ConfigDigitsSmallerThanLast(string i_InputNum)
         {
             // get the last digit
             int len = i_InputNum.Length;
-            int unitNum = stringToDigit(i_InputNum, len - 1);
+            int onesDigit = stringToDigit(i_InputNum, len - 1);
 
             string subStringToCheck = i_InputNum.Substring(0, len - 1);
-            int numOfSmallerThanUnity = configDigitsSmallerThanUnity(subStringToCheck, unitNum);
+            int numOfSmallerThanOnes = configDigitsSmallerThanOnes(subStringToCheck, onesDigit);
 
-            StringBuilder strResultReturn = new StringBuilder("There are no digits that are smaller than the unity digit");
-            if (numOfSmallerThanUnity != 0)
+            StringBuilder strResultReturn = new StringBuilder("There are no digits that are smaller than the ones digit");
+            if (numOfSmallerThanOnes != 0)
             {
-                strResultReturn.Replace("no", numOfSmallerThanUnity.ToString());
+                strResultReturn.Replace("no", numOfSmallerThanOnes.ToString());
             }
 
             return strResultReturn.ToString();
@@ -110,22 +110,22 @@ namespace Ex01_05
             return result;
         }
 
-        // returns number of digits smaller than unitNum.
-        private static int configDigitsSmallerThanUnity(string i_InputNum, int i_unitNum)
+        // returns number of digits smaller than ones digit.
+        private static int configDigitsSmallerThanOnes(string i_InputNum, int i_OnesDigit)
         {
-            int counterSmallerThanUnity = 0;
+            int counterSmallerThanOnes = 0;
 
             for (int i = 0; i < i_InputNum.Length; i++)
             {
                 int numInIndex = stringToDigit(i_InputNum, i);
-                bool isUnitNumBigger = i_unitNum > numInIndex;
-                if (isUnitNumBigger)
+                bool isOnesNumBigger = i_OnesDigit > numInIndex;
+                if (isOnesNumBigger)
                 {
-                    counterSmallerThanUnity++;
+                    counterSmallerThanOnes++;
                 }
             }
 
-            return counterSmallerThanUnity;
+            return counterSmallerThanOnes;
         }
     }
 }

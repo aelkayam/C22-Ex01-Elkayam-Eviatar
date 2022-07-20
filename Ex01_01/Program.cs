@@ -15,19 +15,20 @@ namespace Ex01_01
         public static void Main()
         {
             // input and authentication:
-            string message = "three 7-digits binary numbers.";
-            string firstNumber = UserInput(eInputType.binary, 7, message);
-            string secondNumber = UserInput(eInputType.binary, 7, message);
-            string thirdNumber = UserInput(eInputType.binary, 7, message);
+            // out -> "three 7-digits binary numbers.
+            string message = "7-digits binary numbers.";
+            string firstNumber = GetUserInput(eInputType.binary, 7, message);
+            string secondNumber = GetUserInput(eInputType.binary, 7, message);
+            string thirdNumber = GetUserInput(eInputType.binary, 7, message);
 
             // average zeros/ones:
-            float avgZerosInInput = getAvgAppearancesOfDigit(firstNumber, secondNumber, thirdNumber, '0');
-            float avgOnesInInput = getAvgAppearancesOfDigit(firstNumber, secondNumber, thirdNumber, '1');
+            float avgZerosInInput = getAvgAppearancesOfDigit('0', firstNumber, secondNumber, thirdNumber);
+            float avgOnesInInput = getAvgAppearancesOfDigit('1', firstNumber, secondNumber, thirdNumber);
 
             // conversion:
-            int firstNumberDecimal = convertToDecimal(int.Parse(firstNumber));
-            int secondNumberDecimal = convertToDecimal(int.Parse(secondNumber));
-            int thirdNumberDecimal = convertToDecimal(int.Parse(thirdNumber));
+            int firstNumberDecimal = convertBinaryToDecimal(int.Parse(firstNumber));
+            int secondNumberDecimal = convertBinaryToDecimal(int.Parse(secondNumber));
+            int thirdNumberDecimal = convertBinaryToDecimal(int.Parse(thirdNumber));
 
             // check how many are divisible by 3:
             int numOfDivisibleByThree = countNumsDivisibleByThree(firstNumberDecimal, secondNumberDecimal, thirdNumberDecimal);
@@ -52,7 +53,7 @@ numOfPalindromes);
         }
 
         // get user input, after authentication.
-        public static string UserInput(eInputType i_InputType, int i_requiredLength, string i_Message)
+        public static string GetUserInput(eInputType i_InputType, int i_requiredLength, string i_Message)
         {
             string userInputString;
             bool isValid;
@@ -67,6 +68,7 @@ numOfPalindromes);
                 }
             }
             while (!isValid);
+
             return userInputString;
         }
 
@@ -148,22 +150,15 @@ numOfPalindromes);
         }
 
         // return how many of the parameters are divisible by 3.
-        private static int countNumsDivisibleByThree(int i_FirstNumberDecimal, int i_SecondNumberDecimal, int i_ThirdNumberDecimal)
+        private static int countNumsDivisibleByThree(params int[] i_ArrOfNumToComfigIsDivedBy3)
         {
             int numOfDivisibleByThree = 0;
-            if (DivisibleByThree(i_FirstNumberDecimal))
+            for (int i = 0; i < i_ArrOfNumToComfigIsDivedBy3.Length; i++)
             {
-                numOfDivisibleByThree++;
-            }
-
-            if (DivisibleByThree(i_SecondNumberDecimal))
-            {
-                numOfDivisibleByThree++;
-            }
-
-            if (DivisibleByThree(i_ThirdNumberDecimal))
-            {
-                numOfDivisibleByThree++;
+                if (DivisibleByThree(i_ArrOfNumToComfigIsDivedBy3[i]))
+                {
+                    numOfDivisibleByThree++;
+                }
             }
 
             return numOfDivisibleByThree;
@@ -177,22 +172,16 @@ numOfPalindromes);
         }
 
         // return how many are palindromes
-        private static int countPalindromes(int i_FirstNumber, int i_SecondNumber, int i_ThirdNumber)
+        private static int countPalindromes(params int[] i_ArgOfStrTocheck)
         {
             int numOfPalindromes = 0;
-            if (IsPalindrome(i_FirstNumber.ToString()))
+            for (int i = 0; i < i_ArgOfStrTocheck.Length; i++)
             {
-                numOfPalindromes++;
-            }
-
-            if (IsPalindrome(i_SecondNumber.ToString()))
-            {
-                numOfPalindromes++;
-            }
-
-            if (IsPalindrome(i_ThirdNumber.ToString()))
-            {
-                numOfPalindromes++;
+                bool numIsPalindrome = IsPalindrome(i_ArgOfStrTocheck[i].ToString());
+                if (numIsPalindrome)
+                {
+                    numOfPalindromes++;
+                }
             }
 
             return numOfPalindromes;
@@ -214,12 +203,13 @@ numOfPalindromes);
         }
 
         // convert binary to decimal.
-        private static int convertToDecimal(int i_BinaryNum)
+        private static int convertBinaryToDecimal(int i_BinaryNum)
         {
             int digit;
             int digitPlacement = 0;
             int decimalResult = 0;
-            while(i_BinaryNum > 0)
+
+            while (i_BinaryNum > 0)
             {
                 digit = i_BinaryNum % 10;
                 decimalResult += digit * (int)Math.Pow(2, digitPlacement);
@@ -231,17 +221,27 @@ numOfPalindromes);
         }
 
         // calculate the average appearances of a digit in three numbers.
-        private static float getAvgAppearancesOfDigit(string i_FirstNumber, string i_SecondNumber, string i_ThirdNumber, char i_Digit)
+        private static float getAvgAppearancesOfDigit(char i_Digit, params string[] i_ArgOfStrTocheck)
         {
-            int totalZeros = countDigits(i_FirstNumber, i_Digit) + countDigits(i_SecondNumber, i_Digit) + countDigits(i_ThirdNumber, i_Digit);
-            return totalZeros / 3f;
+            int totalAppearancesOfDigit = 0;
+            int len = i_ArgOfStrTocheck.Length;
+
+            if (len != 0)
+            {
+                for (int i = 0; i < len; i++)
+                {
+                    totalAppearancesOfDigit += countDigits(i_ArgOfStrTocheck[i], i_Digit);
+                }
+            }
+
+            return totalAppearancesOfDigit / (float)len;
         }
 
         // count instances of a digit in a number.
         private static int countDigits(string i_Number, char i_Digit)
         {
             int amountOfDigit = 0;
-            for(int i = 0; i < i_Number.Length; i++)
+            for (int i = 0; i < i_Number.Length; i++)
             {
                 if (i_Number[i] == i_Digit)
                 {
