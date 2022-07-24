@@ -3,16 +3,16 @@ using System.Text;
 
 namespace Ex01_01
 {
-    // input types for Ex01_01, Ex01_04, Ex01_05.
-    public enum eInputType
-    {
-        binary,
-        LettersOrNumbersExclusively,
-        integer,
-    }
-
     public class Program
     {
+        // input types for Ex01_01, Ex01_04, Ex01_05.
+        public enum eInputType
+        {
+            binary,
+            LettersOrNumbersExclusively,
+            integer,
+        }
+
         public static void Main()
         {
             // input and authentication:
@@ -45,7 +45,7 @@ namespace Ex01_01
             // output:
             Console.WriteLine(@"The numbers in decimal and in order are: {0} {1} {2}", biggestNum, midNum, smallestNum);
             Console.WriteLine(
-@"The average of zeros is: {0} and the average of ones: {1}
+@"The average of zeros is: {0:0.##} and the average of ones: {1:0.##}
 There are {2} numbers that are divisible by 3.
 There are {3} palindromes.",
 avgZerosInInput,

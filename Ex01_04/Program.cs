@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using ref_Ex01_01 = Ex01_01.Program;
 
 namespace Ex01_04
 {
@@ -10,7 +11,7 @@ namespace Ex01_04
             // user input:
             const int k_RequiredLength = 9;
             string message = string.Format("{0} characters, either letters only (uppercase or lowercase) or numbers only", k_RequiredLength);
-            string input = Ex01_01.Program.GetUserInput(Ex01_01.eInputType.LettersOrNumbersExclusively, k_RequiredLength, message);
+            string input = ref_Ex01_01.GetUserInput(ref_Ex01_01.eInputType.LettersOrNumbersExclusively, k_RequiredLength, message);
 
             // check divisibility by 3 or how many lowercase letters:
             bool isNumber = int.TryParse(input, out int inputNum);
@@ -35,7 +36,7 @@ namespace Ex01_04
         private static string isDivisibleByThree(int i_NumToCheck)
         {
             StringBuilder stringResult = new StringBuilder("The number is divisible by 3");
-            bool isDivisibleByThree = Ex01_01.Program.DivisibleByThree(i_NumToCheck);
+            bool isDivisibleByThree = ref_Ex01_01.DivisibleByThree(i_NumToCheck);
             if (!isDivisibleByThree)
             {
                 stringResult.Replace("is", "is not");

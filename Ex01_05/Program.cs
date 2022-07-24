@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Text;
+using ref_Ex01_01 = Ex01_01.Program;
 
 namespace Ex01_05
 {
-    internal class Program
+        internal class Program
     {
         public static void Main()
         {
             // Receiving input from the user:
             const int k_RequiredLength = 9;
             string message = string.Format("an integer with {0} digits", k_RequiredLength);
-            string input = Ex01_01.Program.GetUserInput(Ex01_01.eInputType.integer, k_RequiredLength, message);
+            string input = ref_Ex01_01.GetUserInput(ref_Ex01_01.eInputType.integer, k_RequiredLength, message);
 
             // Performing and printing functions:
             Console.WriteLine(ConfigDigitsSmallerThanLast(input));
@@ -33,9 +34,9 @@ namespace Ex01_05
                 sumOfDigit += stringToDigit(i_NumStrToFingAvg, i);
             }
 
-            double avgDigit = sumOfDigit / (double)len;
+            float avgDigit = sumOfDigit / (float)len;
 
-            return string.Format("The average digit is {0}", avgDigit);
+            return string.Format("The average digit is {0:0.##}", avgDigit);
         }
 
         // get how many digits are divisible by 3.
@@ -45,7 +46,7 @@ namespace Ex01_05
             for (int i = 0; i < i_inputStr.Length; i++)
             {
                 int numInIndex = stringToDigit(i_inputStr, i);
-                bool v_isDiviByThree = Ex01_01.Program.DivisibleByThree(numInIndex);
+                bool v_isDiviByThree = ref_Ex01_01.DivisibleByThree(numInIndex);
                 if (v_isDiviByThree)
                 {
                     counterDivisibleByThree++;
