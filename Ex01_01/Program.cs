@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace Ex01_01
 {
@@ -15,11 +16,14 @@ namespace Ex01_01
         public static void Main()
         {
             // input and authentication:
-            // out -> "three 7-digits binary numbers.
-            string message = "7-digits binary numbers.";
-            string firstNumber = GetUserInput(eInputType.binary, 7, message);
-            string secondNumber = GetUserInput(eInputType.binary, 7, message);
-            string thirdNumber = GetUserInput(eInputType.binary, 7, message);
+            const int k_RequiredLength = 7;
+            Console.WriteLine(string.Format("Please enter three {0}-digits binary numbers.", k_RequiredLength));
+            StringBuilder message = new StringBuilder("the 1st 7-digits binary number");
+            string firstNumber = GetUserInput(eInputType.binary, k_RequiredLength, message.ToString());
+            message.Replace("1st", "2nd");
+            string secondNumber = GetUserInput(eInputType.binary, k_RequiredLength, message.ToString());
+            message.Replace("2nd", "3rd");
+            string thirdNumber = GetUserInput(eInputType.binary, k_RequiredLength, message.ToString());
 
             // average zeros/ones:
             float avgZerosInInput = getAvgAppearancesOfDigit('0', firstNumber, secondNumber, thirdNumber);
@@ -59,7 +63,7 @@ numOfPalindromes);
             bool isValid;
             do
             {
-                Console.WriteLine(@"Please enter {0}", i_Message);
+                Console.WriteLine(@"Please enter {0} and then Enter", i_Message);
                 userInputString = Console.ReadLine();
                 isValid = AuthenticateString(i_InputType, i_requiredLength, userInputString);
                 if (!isValid)
