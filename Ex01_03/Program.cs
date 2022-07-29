@@ -20,6 +20,7 @@ namespace Ex01_03
         {
             bool isValid;
             int userInputInt;
+
             do
             {
                 Console.WriteLine("Please enter the height for the diamond:");

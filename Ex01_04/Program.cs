@@ -37,9 +37,10 @@ namespace Ex01_04
         {
             StringBuilder stringResult = new StringBuilder("The number is divisible by 3");
             bool isDivisibleByThree = ref_Ex01_01.DivisibleByThree(i_NumToCheck);
+
             if (!isDivisibleByThree)
             {
-                stringResult.Replace("is", "is not");
+                stringResult.Replace("is ", "is not ");
             }
 
             return stringResult.ToString();
@@ -50,6 +51,7 @@ namespace Ex01_04
         {
             int counterLowercase = calculateNumOfLowercaseLetters(i_StringOfLetters);
             string numOfCounterLowercaseOrNot;
+
             if (counterLowercase == 0)
             {
                 numOfCounterLowercaseOrNot = "no";
@@ -85,6 +87,7 @@ namespace Ex01_04
         {
             bool isPalindrome = Ex01_01.Program.IsPalindrome(i_inputStr);
             StringBuilder strResultReturn = new StringBuilder("the string is not a palindrome");
+
             if (isPalindrome)
             {
                 strResultReturn.Replace("is not", "is");

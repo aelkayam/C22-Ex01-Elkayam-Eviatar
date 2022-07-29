@@ -8,6 +8,7 @@ namespace Ex01_02
         public static void Main()
         {
             const int k_DiamondHeight = 9;
+
             PrintBasicStarDiamond(k_DiamondHeight);
             Console.WriteLine("Press enter to exit");
             Console.ReadLine();

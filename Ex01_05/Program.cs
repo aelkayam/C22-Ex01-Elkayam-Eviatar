@@ -43,10 +43,12 @@ namespace Ex01_05
         public static string ConfigHowManDivByThree(string i_inputStr)
         {
             int counterDivisibleByThree = 0;
+
             for (int i = 0; i < i_inputStr.Length; i++)
             {
                 int numInIndex = stringToDigit(i_inputStr, i);
                 bool v_isDiviByThree = ref_Ex01_01.DivisibleByThree(numInIndex);
+
                 if (v_isDiviByThree)
                 {
                     counterDivisibleByThree++;
@@ -67,10 +69,12 @@ namespace Ex01_05
         private static string findMaxDigit(string i_StringToFindMax)
         {
             int maxDigit = 0;
+
             for (int i = 0; i < i_StringToFindMax.Length; i++)
             {
                 int digitInIndex = stringToDigit(i_StringToFindMax, i);
                 bool v_isMaxSmaller = maxDigit < digitInIndex;
+
                 if (v_isMaxSmaller)
                 {
                     maxDigit = digitInIndex;
@@ -88,11 +92,10 @@ namespace Ex01_05
             // get the last digit
             int len = i_InputNum.Length;
             int onesDigit = stringToDigit(i_InputNum, len - 1);
-
             string subStringToCheck = i_InputNum.Substring(0, len - 1);
             int numOfSmallerThanOnes = configDigitsSmallerThanOnes(subStringToCheck, onesDigit);
-
             StringBuilder strResultReturn = new StringBuilder("There are no digits that are smaller than the ones digit");
+
             if (numOfSmallerThanOnes != 0)
             {
                 strResultReturn.Replace("no", numOfSmallerThanOnes.ToString());
@@ -120,6 +123,7 @@ namespace Ex01_05
             {
                 int numInIndex = stringToDigit(i_InputNum, i);
                 bool isOnesNumBigger = i_OnesDigit > numInIndex;
+
                 if (isOnesNumBigger)
                 {
                     counterSmallerThanOnes++;

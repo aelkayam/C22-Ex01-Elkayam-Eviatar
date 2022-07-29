@@ -17,8 +17,9 @@ namespace Ex01_01
         {
             // input and authentication:
             const int k_RequiredLength = 7;
-            Console.WriteLine(string.Format("Please enter three {0}-digits binary numbers.", k_RequiredLength));
             StringBuilder message = new StringBuilder("the 1st 7-digits binary number");
+
+            Console.WriteLine(string.Format("Please enter three {0}-digits binary numbers.", k_RequiredLength));
             string firstNumber = GetUserInput(eInputType.binary, k_RequiredLength, message.ToString());
             message.Replace("1st", "2nd");
             string secondNumber = GetUserInput(eInputType.binary, k_RequiredLength, message.ToString());
@@ -61,6 +62,7 @@ numOfPalindromes);
         {
             string userInputString;
             bool isValid;
+
             do
             {
                 Console.WriteLine(@"Please enter {0} and then Enter", i_Message);
@@ -81,6 +83,7 @@ numOfPalindromes);
         {
             bool isCorrectLengh = i_UserInputString.Length == i_requiredLength;
             bool isValid = true;
+
             switch (i_InputType)
             {
                 // ex_01:
@@ -112,6 +115,7 @@ numOfPalindromes);
         private static bool checkOnlyDigits(string i_UserInputString)
         {
             int countValidCharacters = 0;
+
             for (int i = 0; i < i_UserInputString.Length; i++)
             {
                 if (char.IsDigit(i_UserInputString[i]))
@@ -127,6 +131,7 @@ numOfPalindromes);
         private static bool checkOnlyLetters(string i_UserInputString)
         {
             int countValidCharacters = 0;
+
             for (int i = 0; i < i_UserInputString.Length; i++)
             {
                 if (char.IsLetter(i_UserInputString[i]))
@@ -142,6 +147,7 @@ numOfPalindromes);
         private static bool checkIfBinary(string i_UserInputString)
         {
             bool isValid = true;
+
             for (int i = 0; i < i_UserInputString.Length; i++)
             {
                 if (i_UserInputString[i] != '1' && i_UserInputString[i] != '0')
@@ -157,6 +163,7 @@ numOfPalindromes);
         private static int countNumsDivisibleByThree(params int[] i_ArrOfNumToComfigIsDivedBy3)
         {
             int numOfDivisibleByThree = 0;
+
             for (int i = 0; i < i_ArrOfNumToComfigIsDivedBy3.Length; i++)
             {
                 if (DivisibleByThree(i_ArrOfNumToComfigIsDivedBy3[i]))
@@ -172,6 +179,7 @@ numOfPalindromes);
         public static bool DivisibleByThree(int i_DecimalNum)
         {
             int remainder = i_DecimalNum % 3;
+
             return remainder == 0;
         }
 
@@ -179,6 +187,7 @@ numOfPalindromes);
         private static int countPalindromes(params int[] i_ArgOfStrTocheck)
         {
             int numOfPalindromes = 0;
+
             for (int i = 0; i < i_ArgOfStrTocheck.Length; i++)
             {
                 bool numIsPalindrome = IsPalindrome(i_ArgOfStrTocheck[i].ToString());
@@ -245,6 +254,7 @@ numOfPalindromes);
         private static int countDigits(string i_Number, char i_Digit)
         {
             int amountOfDigit = 0;
+
             for (int i = 0; i < i_Number.Length; i++)
             {
                 if (i_Number[i] == i_Digit)
